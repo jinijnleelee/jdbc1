@@ -20,6 +20,7 @@ public class JDBCExample2 {
 		try {
 			//2단계 : 참조변수에 알맞은 객체 대입
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			//패키지명 + 클래스 오라클 드라이버
 			
 			String type = "jdbc:oracle:thin:@";
 				String ip = "localhost";
@@ -35,7 +36,8 @@ public class JDBCExample2 {
 			
 			int input = sc.nextInt();
 			
-			String sql = "SELECT EMP_ID, EMP_NAME, SALARY FROM EMPLOYEE WHERE SALARY >" + input;
+			String sql = "SELECT EMP_ID, EMP_NAME, SALARY "
+					+ " FROM EMPLOYEE WHERE SALARY >" + input;
 			
 			stmt = conn.createStatement();
 			
@@ -50,7 +52,8 @@ public class JDBCExample2 {
 			
 			
 			
-			while(rs.next()) {
+			while(rs.next()) { //한씩 접근해서 컬럼값 얻어와야함. 
+				//다음값이 트루, 없으면 펄스 해주는건 rs.next(). 
 				String empid = rs.getString("EMP_ID");
 				String empName = rs.getString("EMP_NAME");
 				int salary = rs.getInt("SALARY");
@@ -65,6 +68,7 @@ public class JDBCExample2 {
 			}
 			
 		}catch(ClassNotFoundException e) {
+			//클래스 잘못써서
 			e.printStackTrace();
 			
 		}catch(SQLException e) {
@@ -73,6 +77,7 @@ public class JDBCExample2 {
 			
 		}finally {
 			//4단계 : 사용한 JDBC 객체 자원 반환 (close())
+			//객체열었던 역순으로 닫아야함 
 			try {
 				if(rs != null)rs.close();
 				if(stmt != null )stmt.close();

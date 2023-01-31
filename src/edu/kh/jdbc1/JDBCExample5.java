@@ -60,7 +60,7 @@ public class JDBCExample5 {
 	conn = DriverManager.getConnection(type + ip + port + sid, user, pw);
 				
 				
-				String sql = "SELECT EMP_NAME,TO_CHAR(HIRE_DATE,'YYYY\"년\"MM\"월\"DD\"일\"') 입사일, "
+				String sql = "SELECT EMP_NAME 이름,TO_CHAR(HIRE_DATE,'YYYY\"년\"MM\"월\"DD\"일\"') 입사일, "
 						+ " DECODE(SUBSTR(EMP_NO,8,1),'1','M','2','F') 성별 "
 						+ " FROM EMPLOYEE "
 						+ " WHERE HIRE_DATE < TO_DATE( '" +  inputHireDate + "')";
@@ -86,7 +86,7 @@ public class JDBCExample5 {
 					
 					
 					emp.setEmpName(rs.getString("이름"));//조회시 컬럼명이 "이름"
-					emp.setHireDate(rs.getDate("입사일")); //조회시 컬럼명이 "입사일"
+					emp.setHireDate(rs.getString("입사일")); //조회시 컬럼명이 "입사일"
 					//현재행의 "입사일" 컬럼의 문자열 값을 얻어와
 					//emp 가 참조하는 객체의 hireDate필드에 세팅
 					emp.setGender(rs.getString("성별").charAt(0));

@@ -6,7 +6,7 @@ public class em {
 	
 	
 	 private String empName;
-	 private Date hireDate;
+	 private String hireDate;
 	 private char Gender;
 	 
 	 public em() {}
@@ -15,7 +15,7 @@ public class em {
 
 	
 
-	public em(String empName, Date hireDate, char gender) {
+	public em(String empName, String hireDate, char gender) {
 		super();
 		this.empName = empName;
 		this.hireDate = hireDate;
@@ -44,7 +44,7 @@ public class em {
 
 
 
-	public Date getHireDate() {
+	public String getHireDate() {
 		return hireDate;
 	}
 
@@ -52,7 +52,7 @@ public class em {
 
 
 
-	public void setHireDate(Date hireDate) {
+	public void setHireDate(String hireDate) {
 		this.hireDate = hireDate;
 	}
 
